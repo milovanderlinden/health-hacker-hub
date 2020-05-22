@@ -2,7 +2,7 @@ import React, { useState, FunctionComponent } from "react"
 import { useDispatch } from 'react-redux'
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Select from "react-select";
+import Select from "react-select/creatable";
 import { Redirect } from "react-router-dom";
 import {
   Form,
@@ -11,20 +11,43 @@ import {
   Input,
   Button,
 } from '@bootstrap-styled/v4';
-
+import { Profile } from '../reducers';
 import api from '../utils/api'
-import industries from '../data/competences'
+import industries from '../data/industries'
 import skills from '../data/skills'
 import { useAuth0 } from "../auth/auth0";
 
 import { FormContainer, LabelField } from './formStyles'
 import { SmallHeader } from '../components/styles'
 
+type SelectOption = {
+  value: string,
+  label: string
+}
+
+const ArrayToSelectOptions = (arr: ReadonlyArray<string>) =>
+  arr
+    .map((item: string): SelectOption =>
+      ({
+        value: item,
+        label: item
+      }))
+
+
 const EditProfileForm = () => {
 
   const { user } = useAuth0() as any;
   const dispatch = useDispatch()
   const [submit, setSubmit] = useState(false)
+
+  const inititialValues = {
+    alias: '',
+    linkedin: '',
+    email: '',
+    skills: [],
+    industries: [],
+    description: '',
+  }
 
   const formik = useFormik({
     validationSchema: Yup.object().shape({
@@ -39,15 +62,7 @@ const EditProfileForm = () => {
           })
         )
     }),
-    initialValues: {
-      alias: '',
-      linkedin: '',
-      email: '',
-      skills: [],
-      industries: [],
-      description: '',
-      category: '',
-    },
+    initialValues: inititialValues,
     onSubmit: profile => {
       // Make API request to create new profile
       api.create(values).then((response: any) => {
@@ -139,7 +154,7 @@ const EditProfileForm = () => {
             onChange={setFieldValue}
             onBlur={setFieldTouched}
             error={errors.industries}
-            options={industries}
+            options={ArrayToSelectOptions(industries)}
             touched={touched.industries}
             name="industries"
             title="Industry"
@@ -149,14 +164,14 @@ const EditProfileForm = () => {
             onChange={setFieldValue}
             onBlur={setFieldTouched}
             error={errors.skills}
-            options={skills}
+            options={ArrayToSelectOptions(skills)}
             touched={touched.skills}
             name="skills"
             title="Skills"
           />
           <Button color="primary" type="submit">Submit</Button>
         </Form>
-      </FormContainer >
+      </FormContainer>
     </>
   );
 };

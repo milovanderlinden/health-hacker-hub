@@ -1,9 +1,13 @@
 /* Api methods to call /functions */
 
 const create = (data: any) => {
-  return fetch('/.netlify/functions/profiles-create', {
+  return fetch('/.netlify/functions/api/users', {
     body: JSON.stringify(data),
-    method: 'POST'
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    }
   }).then(response => {
     return response.json()
   })
