@@ -2,11 +2,13 @@
     "general": {
         "organisation": "Organisatie",
         "organisations": "Organisaties",
-        "person": "Hacker",
-        "people": "Hackers"
+        "person": "Profiel",
+        "people": "Profielen"
     },
-    "buttons": {
-        "back": "Terug"
+    "button": {
+        "back": "Terug",
+        "join": "Join",
+        "submit": "Opslaan"
     },
     "search": {
         "placeholder": "Zoek op naam, specialisatie of competentie"
@@ -19,13 +21,13 @@
         "logout": "Afmelden"
     },
     "home": {
-        "welcome": "We matchen overheids- en gezondheidsorganisaties met hackers om de wereldwijde COVID-19-pandemie te bestrijden",
+        "welcome": "Wij koppelen overheids- en gezondheidsorganisaties met ontwikkelaars om de wereldwijde COVID-19-pandemie te bestrijden",
         "organisations": {
-            "description":"Kan zoeken naar vaardigheden en beschikbaarheid onder hackers en contact met hen opnemen om hun hulp te vragen.",
+            "description":"Zoek naar vaardigheden en beschikbaarheid van ontwikkelaar en neem contact met hen op om hun hulp te vragen.",
             "button":"Zoeken"
         },
         "people": {
-            "description":"Kan zoeken naar vaardigheden en beschikbaarheid onder hackers en contact met hen opnemen om hun hulp te vragen.",
+            "description":"Kan helpen door een persoonlijk profiel toe te voegen, inclusief vaardigheden en indien beschikbaar om mee te helpen.",
             "button":"Meedoen"
         },
         "future": {
@@ -44,10 +46,30 @@
         "about": "Dit platform is het resultaat van onze teaminspanning op de Hack Corona hackathon, gehost van 27-31 maart 2020 door Dutch Hacking Health."
     },
     "profile": {
+        "your": "Mijn profiel",
         "full": "Volledig profiel",
         "description": "Beschrijving",
         "linkedin": "LinkedIn",
         "industry": "Vakgebied",
-        "skills": "Specialisatie"
+        "skills": "Specialisatie",
+        "email": "Email",
+        "alias": "Alias",
+        "placeholder": {
+            "alias": "Kies een alias",
+            "email": "Geef je email adres",
+            "linkedin": "Geef de url naar je LinkedIn profiel"
+        }
+    },
+    "organisation": {
+        "title": "Organisaties en projecten",
+        "project": "Project",
+        "wants": "Op zoek naar"
+    },
+    "required": {
+        "alias": "Alias is verplicht!",
+        "industry": "Kies tenminste 1 vakgebied"
+    },
+    "error": {
+        "api": "Er is een API fout opgetreden"
     }
 }

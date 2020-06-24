@@ -1,6 +1,6 @@
 /* tslint-disable */
 import React, { useState, useEffect, useContext } from "react";
-import createAuth0Client from "@auth0/auth0-spa-js";
+import createAuth0Client, { Auth0Client } from "@auth0/auth0-spa-js";
 
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
@@ -13,15 +13,15 @@ export const Auth0Provider = ({
   ...initOptions
 }: any) => {
 
-  const [isAuthenticated, setIsAuthenticated] = useState();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState();
-  const [auth0Client, setAuth0] = useState();
+  const [auth0Client, setAuth0] = useState(new Auth0Client(initOptions));
   const [loading, setLoading] = useState(true);
   const [popupOpen, setPopupOpen] = useState(false);
 
   useEffect(() => {
     const initAuth0 = async () => {
-      const auth0FromHook = await createAuth0Client(initOptions);
+      const auth0FromHook: Auth0Client = await createAuth0Client(initOptions);
       setAuth0(auth0FromHook);
 
       if (

@@ -61,7 +61,6 @@
   position: relative;
   margin: 1.75rem auto;
   border-radius: 3px;
-  max-width: 500px;
   padding: 2rem;
 }
 
@@ -115,4 +114,12 @@ body > #root > div > div, body > #root > div {
 
 .nav-item {
   text-align: left;
+}
+
+.card-header {
+  background-color: rgba(2, 117, 216, .1) !important;
+}
+
+.card {
+  margin: 1em;
 }

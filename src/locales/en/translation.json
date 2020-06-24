@@ -5,8 +5,10 @@
         "person": "Hacker",
         "people": "Hackers"
     },
-    "buttons": {
-        "back": "Back"
+    "button": {
+        "back": "Back",
+        "join": "Join",
+        "submit": "Submit"
     },
     "search": {
         "placeholder": "Search for alias, skills, competences"
@@ -44,10 +46,30 @@
         "about": "This platform is the result of our teameffort at de Hack Corona hackaton hosted from 27-31 march 2020 by Dutch Hacking Health."
     },
     "profile": {
+        "your": "Your profile",
         "full": "Full profile",
         "description": "Description",
         "linkedin": "LinkedIn",
         "industry": "Industry",
-        "skills": "Skills"
+        "skills": "Skills",
+        "email": "Email",
+        "alias": "Alias",
+        "placeholder": {
+            "alias": "Enter your alias",
+            "email": "Enter your email",
+            "linkedin": "Enter your LinkedIn"
+        }
+    },
+    "organisation": {
+        "title": "Organisations and projects",
+        "project": "Project",
+        "wants": "Searching for"
+    },
+    "required": {
+        "alias": "Alias is required!",
+        "industry": "Pick at least 1 industry"
+    },
+    "error": {
+        "api": "An API error occurred"
     }
 }

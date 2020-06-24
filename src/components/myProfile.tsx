@@ -1,4 +1,6 @@
 import React, { useState, FunctionComponent } from "react"
+import { useTranslation } from "react-i18next";
+import i18n from '../i18n';
 import { useDispatch } from 'react-redux'
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -21,7 +23,7 @@ import { FormContainer, LabelField } from './formStyles'
 import { SmallHeader } from '../components/styles'
 
 const EditProfileForm = () => {
-
+  const { t } = useTranslation('translations', { i18n });
   const { user } = useAuth0() as any;
   const dispatch = useDispatch()
   const [submit, setSubmit] = useState(false)
@@ -29,9 +31,9 @@ const EditProfileForm = () => {
   const formik = useFormik({
     validationSchema: Yup.object().shape({
       alias: Yup.string()
-        .required("Alias is required!"),
+        .required(t('required.alias')),
       industries: Yup.array()
-        .min(1, "Pick at least 1 industry")
+        .min(1, t('required.industry'))
         .of(
           Yup.object().shape({
             label: Yup.string().required(),
@@ -54,7 +56,7 @@ const EditProfileForm = () => {
         dispatch({ type: "UPDATE_PROFILE", payload: values })
         setSubmit(true)
       }).catch((e: any) => {
-        console.log('An API error occurred', e)
+        console.log(t('error.api'), e)
       })
     },
   });
@@ -74,15 +76,15 @@ const EditProfileForm = () => {
     <>
       {submit && <Redirect to="/profiles" />}
       <FormContainer>
-        <SmallHeader>Your profile</SmallHeader>
+        <SmallHeader>{t('profile.your')}</SmallHeader>
         <Form onSubmit={handleSubmit}>
           <FormGroup>
             <LabelField htmlFor="alias" style={{ display: "block" }}>
-              Alias
+            {t('profile.alias')}
             </LabelField>
             <Input
               id="alias"
-              placeholder="Enter your alias"
+              placeholder={t('profile.placeholder.alias')}
               type="alias"
               value={values.alias}
               onChange={handleChange}
@@ -94,11 +96,11 @@ const EditProfileForm = () => {
           </FormGroup>
           <FormGroup>
             <LabelField htmlFor="email" style={{ display: "block" }}>
-              Email
+              {t('profile.email')}
             </LabelField>
             <Input
               id="email"
-              placeholder="Enter your email"
+              placeholder={t('profile.placeholder.email')}
               type="email"
               disabled
               value={user.email}
@@ -111,11 +113,11 @@ const EditProfileForm = () => {
           </FormGroup>
           <FormGroup>
             <LabelField htmlFor="LinkedIn" style={{ display: "block" }}>
-              Linkedin
+              {t('profile.linkedin')}
             </LabelField>
             <Input
               id="linkedin"
-              placeholder="Enter your LinkedIn"
+              placeholder={t('profile.placeholder.linkedin')}
               type="LinkedIn"
               value={values.linkedin}
               onChange={handleChange}
@@ -123,7 +125,7 @@ const EditProfileForm = () => {
             />
           </FormGroup>
           <FormGroup controlId="formDescription">
-            <Label htmlFor="inline-form-input">Description</Label>
+            <Label htmlFor="inline-form-input">{t('profile.description')}</Label>
             <Input
               type="textarea"
               className="form-control"
@@ -142,7 +144,7 @@ const EditProfileForm = () => {
             options={industries}
             touched={touched.industries}
             name="industries"
-            title="Industry"
+            title={t('profile.industry')}
           />
           <TagSelect
             value={values.skills}
@@ -152,9 +154,9 @@ const EditProfileForm = () => {
             options={skills}
             touched={touched.skills}
             name="skills"
-            title="Skills"
+            title={t('profile.skills')}
           />
-          <Button color="primary" type="submit">Submit</Button>
+          <Button color="primary" type="submit">{t('button.submit')}</Button>
         </Form>
       </FormContainer >
     </>

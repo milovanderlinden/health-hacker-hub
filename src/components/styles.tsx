@@ -69,7 +69,6 @@ export const Icons = styled.div`
 
 export const Centered = styled.div`
   display: flex;
-  max-width: 1200px;
   width: 100%;
   align-items: center;
 `
@@ -94,39 +93,46 @@ export const MainContainer = styled.div`
 
 export const ContentContainer = styled(MainContainer)`
   flex: 1;
-  padding: 0px 10px 0px 10px;
-  -webkit-box-shadow: 1px -7px 17px -11px rgba(0,0,0,0.58);
-  -moz-box-shadow: 1px -7px 17px -11px rgba(0,0,0,0.58);
-  box-shadow: 1px -7px 17px -11px rgba(0,0,0,0.58);
 `
 
 export const Content = styled(Centered)`
   background: #ffffff;
-  padding: 30px;
-  color: black;
+  padding: 0 2em 0 2em;
   display: block;
-  box-shadow:0px 9px 7px -5px #000000;
 `
 
-export const FooterContainer = styled(MainContainer)`
-  background: #414756;
+export const FooterContainer = styled.div`
+  background: rgba(65, 71, 86, 0.5);
+  margin-top: 1em;
 `
 
-export const Footer = styled(Centered)`
+export const Footer = styled.div`
   color:white;
-  height: 150px;
   padding: 40px;
   font-family: 'Sen';
-  box-shadow:0px 9px 7px -5px #fff;
   display: flex;
-  flex-direction: row;
-  span {                                                                                                                                                                                                                                                                      
-    padding: 0 3em 0 3em;
-    border-right: 2px solid #fff;
-    &:last-child {
-      border-right: 0px;
+  @media(min-width: 768px) {
+    flex-direction: row;
+    span {
+      padding: 0 3em 0 3em;
+      border-right: 2px solid #fff;
+      &:last-child {
+        border-right: 0px;
+      }
     }
   }
+  @media(max-width: 768px){
+    flex-direction: column;
+    span {
+      width: 100%;
+      padding: 1em;
+      border-bottom: 2px solid #fff;
+      &:last-child {
+        border-bottom: 0px;
+      }
+    }
+  }
+  
 `
 
 export const EditProfileContainer = styled.div`                                                       

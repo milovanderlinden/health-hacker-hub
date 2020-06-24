@@ -133,7 +133,7 @@ const ProfileView: FunctionComponent<{ profile: Profile }> = (props) => {
 
   return (
     <div style={{ textAlign: 'left' }}>
-      <Button color="secondary">{t('buttons.back')}</Button>
+      <Button color="secondary">{t('button.back')}</Button>
       <H1 style={{ marginTop: '20px' }}>{profile.alias}</H1>
       <Row style={{ marginTop: '20px' }}>
         <Col xs={{ size: 2 }}>

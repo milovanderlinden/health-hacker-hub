@@ -1,17 +1,15 @@
 import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import XHR from "i18next-xhr-backend";
 import English from "./locales/en/translation.json";
 import Dutch from "./locales/nl/translation.json";
 import { initReactI18next } from "react-i18next";
 
 i18n
-.use(XHR)
 .use(LanguageDetector)
 .use(initReactI18next)
 .init({
     debug: true,
-    lng: "en",
+    lng: "nl",
     fallbackLng: "en",
     saveMissing: true,
     interpolation: {
