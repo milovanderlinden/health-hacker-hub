@@ -24,7 +24,10 @@ const HeaderComponent: FunctionComponent = () => {
   const [navOpen, toggleBurger] = useState(false)
   const dispatch = useDispatch()
   const dispatchStartAddProfile = useCallback(
-    () => (dispatch({ type: "EDIT_PROFILE", payload: true })),
+    () => {
+      toggleBurger(false)
+      return dispatch({ type: "EDIT_PROFILE", payload: true })
+    },
     [dispatch]
   );
 
